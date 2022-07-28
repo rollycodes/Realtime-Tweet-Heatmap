@@ -1,0 +1,43 @@
+{
+    "data": {
+        "author_id": "1467490112124694536",
+        "geo": {
+            "place_id": "31d801bc812e1356"
+        },
+        "id": "1552539545228525574",
+        "text": "@JuliaHB1 It's an airport not a sea port �"
+    },
+    "includes": {
+        "users": [{
+                "id": "1467490112124694536",
+                "location": "Nottingham, England",
+                "name": "Tracy OShea",
+                "username": "TracyOShea10"
+            },
+            {
+                "id": "459390022",
+                "location": "London",
+                "name": "Julia Hartley-Brewer",
+                "username": "JuliaHB1"
+            }
+        ],
+        "places": [{
+            "country": "United Kingdom",
+            "full_name": "Beeston, England",
+            "geo": {
+                "type": "Feature",
+                "bbox": [-1.272419,
+                    52.8998504, -1.187896,
+                    52.949038
+                ],
+                "properties": {}
+            },
+            "id": "31d801bc812e1356",
+            "name": "Beeston"
+        }]
+    },
+    "matching_rules": [{
+        "id": "1552539532716695553",
+        "tag": ""
+    }]
+}
