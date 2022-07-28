@@ -1,83 +1,98 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <title>Twitter Feed Heatmap</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" type="text/css" href="./stylesheets/style.css" />
     <link rel="shortcut icon" type="image/png" href="./stylesheets/twitter.png" />
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126573748-1"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjxb5NAE3EdCu0a3iSC4fkfuokW4veWAE&libraries=visualization"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDavBrJ193ecJQRLDVMy6ZzZWGFBP4QK90&libraries=visualization"></script>
     <!-- <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-126573748-1');</script> -->
     <script>
-      !function () {
-        var analytics = window.analytics = window.analytics || []; if (!analytics.initialize) if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice."); else {
-        analytics.invoked = !0; analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"]; analytics.factory = function (t) { return function () { var e = Array.prototype.slice.call(arguments); e.unshift(t); analytics.push(e); return analytics } }; for (var t = 0; t < analytics.methods.length; t++) { var e = analytics.methods[t]; analytics[e] = analytics.factory(e) } analytics.load = function (t, e) { var n = document.createElement("script"); n.type = "text/javascript"; n.async = !0; n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(n, a); analytics._loadOptions = e }; analytics.SNIPPET_VERSION = "4.1.0";
-          analytics.load("DOhauq8SV8rakUF4tWJMa2TJx4apP3wL");
-          analytics.page();
-        }
-      }();
+        ! function() {
+            var analytics = window.analytics = window.analytics || [];
+            if (!analytics.initialize)
+                if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
+                else {
+                    analytics.invoked = !0;
+                    analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
+                    analytics.factory = function(t) {
+                        return function() {
+                            var e = Array.prototype.slice.call(arguments);
+                            e.unshift(t);
+                            analytics.push(e);
+                            return analytics
+                        }
+                    };
+                    for (var t = 0; t < analytics.methods.length; t++) {
+                        var e = analytics.methods[t];
+                        analytics[e] = analytics.factory(e)
+                    }
+                    analytics.load = function(t, e) {
+                        var n = document.createElement("script");
+                        n.type = "text/javascript";
+                        n.async = !0;
+                        n.src = "https://cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+                        var a = document.getElementsByTagName("script")[0];
+                        a.parentNode.insertBefore(n, a);
+                        analytics._loadOptions = e
+                    };
+                    analytics.SNIPPET_VERSION = "4.1.0";
+                    analytics.load("DOhauq8SV8rakUF4tWJMa2TJx4apP3wL");
+                    analytics.page();
+                }
+        }();
     </script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="map"></div>
 
     <div id="modal-left">
-      <div class="close">x</div>
-      <div class="instructions">
-        Click on the countries in the left!<br />
-        Some languages aren't supported<br />
-        for sentiment analysis, so you<br />
-        may not see any effect.<br />
-      </div>
+        <div class="close">x</div>
+        <div class="instructions">
+            Click on the countries in the left!<br /> Some languages aren't supported<br /> for sentiment analysis, so you<br /> may not see any effect.<br />
+        </div>
     </div>
 
     <div id="modal-right">
-      <div class="close">x</div>
-      <div class="instructions">
-        A limit of 100 tweets is set.<br />
-        In order to stream more tweets<br />
-        refresh the page<br /><br />
-        This website has no relation<br />
-        to the actual Twitter company<br />
-      </div>
+        <div class="close">x</div>
+        <div class="instructions">
+            A limit of 100 tweets is set.<br /> In order to stream more tweets<br /> refresh the page<br /><br /> This website has no relation<br /> to the actual Twitter company<br />
+        </div>
     </div>
 
     <div id="left-nav" class="nav">
-      <div class="header">Tweets by Country</div>
-      <div class="time-sub"></div>
-      <div class="elapsed-sub"></div>
-      <div class="container"></div>
+        <div class="header">Tweets by Country</div>
+        <div class="time-sub"></div>
+        <div class="elapsed-sub"></div>
+        <div class="container"></div>
     </div>
 
     <div id="right-nav" class="nav">
-      <div class="header">Realtime Tweet Feed</div>
-      <div class="total-sub"></div>
-      <div class="container"></div>
+        <div class="header">Realtime Tweet Feed</div>
+        <div class="total-sub"></div>
+        <div class="container"></div>
     </div>
 
     <div id="bottom-nav" class="nav">
-      <div class="logos">
-        <a href='https://github.com/gusuly0rum'class="github-logo" target="_blank"></a>
-        <a href='https://www.linkedin.com/in/donguk-kim/'class="linkedin-logo" target="_blank"></a>
-      </div>
+        <div class="logos">
+            <a href='https://github.com/gusuly0rum' class="github-logo" target="_blank"></a>
+            <a href='https://www.linkedin.com/in/donguk-kim/' class="linkedin-logo" target="_blank"></a>
+        </div>
 
-      <div class="about">
-        <div class="header">About</div>
-        Twitter Feed Heatmap is a data visualization app
-        with a node.js backend and vanilla js frontend.
-        It uses the Twitter, Google Maps and IBM Watson APIs to
-        stream live tweets around the globe and perform sentiment
-        analysis using the contents of the tweets.
-        <span class="link">Click on the icons to the left to find out more about the developer</span>
-      </div>
+        <div class="about">
+            <div class="header">About</div>
+            Twitter Feed Heatmap is a data visualization app with a node.js backend and vanilla js frontend. It uses the Twitter, Google Maps and IBM Watson APIs to stream live tweets around the globe and perform sentiment analysis using the contents of the tweets.
+            <span class="link">Click on the icons to the left to find out more about the developer</span>
+        </div>
 
-      <div class="stats">
-        <div class="header">Average Sentiment by Country</div>
-        <div class="analysis"></div>
-      </div>
+        <div class="stats">
+            <div class="header">Average Sentiment by Country</div>
+            <div class="analysis"></div>
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -90,6 +105,6 @@
     <script src="./javascripts/right_nav.js"></script>
     <script src="./javascripts/bottom_nav.js"></script>
     <script src="./javascripts/client.js" async defer></script>
-  </body>
+</body>
 
 </html>

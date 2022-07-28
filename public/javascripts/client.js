@@ -33,7 +33,5 @@ socket.on('connection', function() {
                 console.log('Geocode was not successful for the following reason: ' + status);
             }
         });
-
-
     });
 });

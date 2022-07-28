@@ -13,11 +13,9 @@ const io = Socket(server);
 
 
 
-// const watson = new nluV1({
-//     version: '2018-03-16',
-//     username: process.env.USERNAME || Key.USERNAME,
-//     password: process.env.PASSWORD || Key.PASSWORD
-// });
+const watson = new nluV1({
+    version: '2018-03-16',
+});
 
 io.sockets.on('connection', function(socket) {
     socket.emit('connection');
@@ -85,12 +83,18 @@ io.sockets.on('connection', function(socket) {
             tweet.data["user"]["screen_name"] = screen_name;
             tweet.data["user"]["profile_image_url"] = profile_image_url;
             const tweetData = Filter.twitterData(tweet.data);
-            //const parameters = Filter.watsonParameters(tweetData.text);
-            // watson.analyze(parameters, function (_, response) {
-            // const analyzedData = Filter.watsonData(response);
-            //const filteredData = Object.assign({}, tweetData, analyzedData);
-            const filteredData = Object.assign({}, tweetData);
-            socket.emit('filteredData', filteredData);
+            const parameters = Filter.watsonParameters(tweetData.text);
+            watson.analyze(parameters, function(_, response) {
+                if (response) {
+                    console.log("--SENTIMENT--");
+                    //console.log(JSON.stringify(response));
+                    const analyzedData = Filter.watsonData(response);
+                    const filteredData = Object.assign({}, tweetData, analyzedData);
+                    // const filteredData = Object.assign({}, tweetData);
+                    console.log(filteredData);
+                    socket.emit('filteredData', filteredData);
+                }
+            });
             return;
         });
 

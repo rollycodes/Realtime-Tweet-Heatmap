@@ -14,7 +14,6 @@ function twitterData(data) {
             data.geo.coordinates[1]
         ]
     };
-    console.log(filteredData);
     return filteredData;
 }
 
